@@ -44,7 +44,7 @@ let collegeId=await collegeModel.findOne(data)
 if(!collegeId){return res.status(400).send({status:false,msg:"COLLEGE NOT FOUND GIVE RIGHT COLLEGE NAME"})}
 if(collegeId.isDeleted) {return res.status(400).send({status:false,msg:"COLLEGE HAS BEEN DELETED"})}
  
-let internsNameWithCollege= await internModel.find({collegeId:collegeId._id})
+let internsNameWithCollege= await internModel.find({collegeId:collegeId._id}).select({_id:1,name:1,email:1,mobile:1})
 if(internsNameWithCollege.length==0) return res.status(400).send({status:false,msg:"NO INTERN FOUND FROM THIS COLLAGE"})
 
 let NewData={
