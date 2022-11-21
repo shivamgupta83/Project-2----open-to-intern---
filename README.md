@@ -23,10 +23,10 @@
 
   `Endpoint: BASE_URL/functionup/colleges`
 
-### POST /functionup/interns
+### POST /functionup/interns 
 - Create a document for an intern. 
 - Also save the collegeId along with the document. Your request body contains the following fields - { name, mobile, email, collegeName}
-- Return HTTP status 201 on a succesful document creation. Also return the document. The response should be a JSON object like [this](#successful-response-structure) 
+- Return HTTP status 201 on a succesful document creation. Also return the document. The response should be a JSON object like [this](#successful-response-structure)
 
 - Return HTTP status 400 for an invalid request with a response body like [this](#error-response-structure)
 
@@ -84,7 +84,7 @@ Refer below sample
     "name" : "Jane Does",
     "email" : "jane.doe@iith.in",
     "mobile" : "90000900000",
-    "collegeId" : ObjectId("888771129c9ea621dc7f5e3b")
+    "collegeId" : "637b674660d9397e26d6ffed"
 }
 ```
 ## Response samples
