@@ -6,7 +6,7 @@ const InternSchema = new mongoose.Schema({
       required: true,
       trim:true,
       lowercase:true,
-      uppercase: true
+      uppercase: false
    },
    
    collegeId: {
