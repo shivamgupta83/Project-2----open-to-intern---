@@ -5,7 +5,7 @@ const internModel=require("../models/internModel")
 const createCollege = async function(req,res){
     try{   
          const data= req.body
-        let w = Object.keys(req.query)
+        let w = Object.keys(req.body)
         if(Object.keys(req.body).length==0)
         return res.status(400).send({status :false , message : "please fill all the fields"})
 
@@ -14,17 +14,17 @@ if(Object.keys(req.body).length<3)  return res.status(400).send({status:false,ms
 if(!["name","fullName","logoLink"].includes(...w)) return res.status(400).send({status:false,msg:"body should only name,fullName,logoLink"})
 
     
-if (!/^[a-z]+$/i.test(data.name)) {
+if (!/^[a-z]+$/.test(data.name)) {
     return    res.status(400).send({ status: false, message: "Name should be in valid format" })
         ;
     }
 
-    if (!/[a-zA-Z\s]+$/ .test(data.fullName)) {
+    if (!/[a-zA-Z\s]+$/.test(data.fullName)) {
         return   res.status(400).send({ status: false, message: "fullName should be in valid format" })
         
     }
 
-    if (!/https?:\/\/(www\.)?[-a-zA-Z0-9@:%.\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%\+.~#()?&//=]*)/igm/i.test(data.logoLink)) {
+    if (!/https?:\/\/(www\.)?[-a-zA-Z0-9@:%.\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%\+.~#()?&//=]*)/.test(data.logoLink)) {
         return    res.status(400).send({ status: false, message: "logoLink should be in valid format" })
             ;
         }
