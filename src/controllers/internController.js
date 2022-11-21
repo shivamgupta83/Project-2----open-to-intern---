@@ -31,14 +31,14 @@ const interns = async function(req,res){
     
     
      let  modileTest1 = modileTest.test(mobile)
-     if (!modileTest1){ res.status(400).send({status:false ,data:"mobile no is not correct" }) }
+     if (!modileTest1){return res.status(400).send({status:false ,data:"mobile no is not correct" }) }
 
     let checkmobile = await internModel.findOne({mobile:mobile})
     if(checkmobile) 
     return res.status(400).send({status:false,msg:"Mobile no is registered"});
 
     let  emailTest1 = emailTest.test(email)
-    if (!emailTest1){ res.status(400).send({status:false ,data:"email no is not correct" }) }
+    if (!emailTest1){ return res.status(400).send({status:false ,data:"email no is not correct" }) }
 
     let checkemail = await internModel.findOne({email:email})
     if(checkemail) 

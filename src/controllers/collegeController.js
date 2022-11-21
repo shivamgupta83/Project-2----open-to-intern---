@@ -47,7 +47,7 @@ const listOfCollageIntern=async function(req,res){
 if(!["collegeName"].includes(...w)) return res.status(400).send({status:false,msg:"query can only collegeName"})
 
  
-let collegeId=await collegeModel.findOne(data)
+let collegeId=await collegeModel.findOne({name:data.collegeName})
 if(!collegeId){return res.status(400).send({status:false,msg:"COLLEGE NOT FOUND GIVE RIGHT COLLEGE NAME"})}
 if(collegeId.isDeleted) {return res.status(400).send({status:false,msg:"COLLEGE HAS BEEN DELETED"})}
  
