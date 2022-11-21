@@ -37,7 +37,7 @@ const interns = async function(req,res){
     if(checkmobile) 
     return res.status(400).send({status:false,msg:"Mobile no is registered"});
 
-    let  emailTest1 = modileTest.test(email)
+    let  emailTest1 = emailTest.test(email)
     if (!emailTest1){ res.status(400).send({status:false ,data:"email no is not correct" }) }
 
     let checkemail = await internModel.findOne({email:email})

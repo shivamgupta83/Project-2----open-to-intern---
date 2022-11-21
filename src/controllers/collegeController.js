@@ -3,26 +3,33 @@ const internModel=require("../models/internModel")
 
 
 const createCollege = async function(req,res){
-    try{    const data= req.body
-
+    try{   
+         const data= req.body
+        let w = Object.keys(req.query)
         if(Object.keys(req.body).length==0)
         return res.status(400).send({status :false , message : "please fill all the fields"})
 
 if(Object.keys(req.body).length<3)  return res.status(400).send({status:false,msg:"body should all property name,fullName,logoLink "})
 
-if(![name,fullName,logoLink].includes(...data)) return res.status(400).send({status:false,msg:"body should only name,fullName,logoLink"})
+if(!["name","fullName","logoLink"].includes(...w)) return res.status(400).send({status:false,msg:"body should only name,fullName,logoLink"})
 
+    
+if (!/^[a-z]+$/i.test(data.name)) {
+    return    res.status(400).send({ status: false, message: "Name should be in valid format" })
+        ;
+    }
+
+    if (!/[a-zA-Z\s]+$/ .test(data.fullName)) {
+        return   res.status(400).send({ status: false, message: "fullName should be in valid format" })
+        
+    }
+
+    if (!/https?:\/\/(www\.)?[-a-zA-Z0-9@:%.\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%\+.~#()?&//=]*)/igm/i.test(data.logoLink)) {
+        return    res.status(400).send({ status: false, message: "logoLink should be in valid format" })
+            ;
+        }
+        
  
-  if(!name || name=="")
-  return res.status(400).send({status :false, message : "please provide the name"})
-
-  if(!fullName || fullName=="")
-  return res.status(400).send({status :false, message : "please provide the fullname of the college"})
-
-  if(!logoLink || logoLink=="")
-  return res.status(400).send({status :false, message : "please provide the logoLink"})
-
-
      const{name,fullName,logoLink} =data
      let savedcollege = await collegeModel.create({name,fullName,logoLink})
         return res.status(201).send({status : true,data : savedcollege})
@@ -36,8 +43,8 @@ if(![name,fullName,logoLink].includes(...data)) return res.status(400).send({sta
 
 const listOfCollageIntern=async function(req,res){
     let data = req.query
-
-if(![collegeName].includes(...data)) return res.status(400).send({status:false,msg:"query can only collegeName"})
+    let w = Object.keys(req.query)
+if(!["collegeName"].includes(...w)) return res.status(400).send({status:false,msg:"query can only collegeName"})
 
  
 let collegeId=await collegeModel.findOne(data)
