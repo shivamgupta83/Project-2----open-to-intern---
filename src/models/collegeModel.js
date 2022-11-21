@@ -6,13 +6,15 @@ const collegeSchema = new mongoose.Schema({
         unique: true,
         required: 'College name is Neccasary',
         trim: true,
-        lowercase:true
+        lowercase:true,
+        uppercase: false
     },
     fullName: {                              
         type: String,
         require: 'Fullname is Neccasary',
         trim: true,
-        lowercase:true
+        lowercase:true,
+        uppercase: false
     },
     logoLink: {
         type: String,
