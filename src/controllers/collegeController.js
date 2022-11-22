@@ -2,6 +2,8 @@ const collegeModel = require("../models/collegeModel")
 const internModel=require("../models/internModel")
 
 
+const { isValid, nameReg , fullnameReg, logoRegex } = require("../Validation/validation") 
+
 const createCollege  =   async function(req,res){
    
  try{

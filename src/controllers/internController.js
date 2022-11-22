@@ -1,5 +1,6 @@
 const collegeModel = require('../models/collegeModel');
 const internModel = require('../models/internModel');
+
 const { isValid, nameReg , fullnameReg, logoRegex, emailTest , mobileTest } = require("../Validation/validation") 
 
 
