@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId
+
 const InternSchema = new mongoose.Schema({
     name: {
       type: String,
       required: true,
-      trim:true,
-      lowercase:true,
-      uppercase: false
+      trim: true
    },
    
    collegeId: {
@@ -17,22 +16,19 @@ const InternSchema = new mongoose.Schema({
    email: {
       type: String,
       required: true,
-      unique: true,
-      lowercase: true,
-      trim:true
+      unique: true
+      
    },
    mobile: {
       type: Number,
       unique: true,
-      required: true,
-      trim:true,
-      match: /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/
+      required: true
    },
    isDeleted:{
     type:Boolean,
     default:false
    }
-   }, { timestemps: true }
+   }, { timestamps: true }
 )
 
 module.exports = mongoose.model("Intern",InternSchema)
