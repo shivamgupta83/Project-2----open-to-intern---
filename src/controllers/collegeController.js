@@ -1,31 +1,17 @@
 const collegeModel = require("../models/collegeModel")
-const internModel = require("../models/internModel")
+const internModel=require("../models/internModel")
 
 
-const { isValid, nameReg, fullnameReg, logoRegex} = require("../Validation/validation")
+const createCollege  =   async function(req,res){
+   
+ try{
+        let data = req.body ;
+       
+        if (Object.keys(data).length == 0)  
+        
+        return res.status(400).send({ status: false, message: "Please enter the name, fullName and logoLink." });
 
-
-const createCollege = async function (req, res) {
-    try {
-        const data = req.body
-
-        const { name, fullName, logoLink } = data;
-
-        let w = Object.keys(data)
-
-        if (Object.keys(data).length == 0)
-            return res.status(400).send({ status: false, message: "Please fill all the fields." })
-
-        if (Object.keys(data).length < 3)
-            return res.status(400).send({ status: false, msg: "body should all property name,fullName,logoLink " })
-
-
-        if (!["name", "fullName", "logoLink"].includes(...w))
-            return res.status(400).send({ status: false, msg: "body should only name,fullName,logoLink" })
-
-
-        // VALIDATION FOR EMPTY INFORMATION.
-
+        const { name, fullName, logoLink } = data  
 
         if (!isValid(name))
             return res.status(400).send({ status: false, msg: "Please provide name" })

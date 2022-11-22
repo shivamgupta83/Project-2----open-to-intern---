@@ -15,5 +15,8 @@ router.get("/functionup/collegeDetails",collegeController.listOfCollageIntern)
 
 
 
-
 module.exports=router
+
+
+
+

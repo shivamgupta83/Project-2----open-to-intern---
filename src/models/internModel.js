@@ -20,6 +20,7 @@ const InternSchema = new mongoose.Schema({
       required: true,
       unique: true,
       lowercase: true,
+      uppercase: false,
       trim:true
    },
    mobile: {
@@ -33,7 +34,7 @@ const InternSchema = new mongoose.Schema({
     type:Boolean,
     default:false
    }
-   }, { timestemps: true }
+   }, { timestamps: true }
 )
 
 module.exports = mongoose.model("Intern",InternSchema)
