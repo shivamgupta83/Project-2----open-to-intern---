@@ -33,27 +33,6 @@ const interns = async function (req, res) {
         let emailTest1 = emailTest.test(email)
         if (!emailTest1) { res.status(400).send({ status: false, data: "email no is not correct" }) }
 
-<<<<<<< HEAD
-
-
-        let checkemail = await internModel.findOne({ email: email })
-        if (checkemail)
-            return res.status(400).send({ status: false, msg: "email is registered" });
-
-        let checkmobile = await internModel.findOne({ mobile: mobile })
-        if (checkmobile)
-            return res.status(400).send({ status: false, msg: "Mobile no is registered" });
-
-        let CheckCollegeName = await collegeModel.findOne({ name: collegeName })             // Checking with name not by fullname of college
-        if (!CheckCollegeName)
-            return res.status(400).send({ status: false, msg: "No similar college found" });
-
-        let collegeId = CheckCollegeName._id
-
-        let createdata = await internModel.create({ name, mobile, email, collegeId })
-        return res.status(201).send({ status: true, msg: createdata })
-
-=======
         let modileTest1 = modileTest.test(mobile)
         if (!modileTest1) { res.status(400).send({ status: false, data: "mobile no is not correct" }) }
 
@@ -74,7 +53,6 @@ const interns = async function (req, res) {
         let createdata = await internModel.create({ name, mobile, email, collegeId })
         return res.status(201).send({ status: true, msg: createdata })
 
->>>>>>> 83e0b4a47141e4765bd17b91e2cb864e14295be6
     }
     catch (error) {
         return res.status(500).send({ status: false, msg: error.message })
