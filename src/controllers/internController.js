@@ -27,7 +27,7 @@ const interns = async function (req, res) {
         const name1 = nameReg.test(name)
         const collegeName1 = nameReg.test(collegeName)
         if (name1 == false || collegeName1 == false) {
-            return res.status(400).send({ msg: "Special characters are not allowed in firstName and lastName" })
+            return res.status(400).send({ msg: "Special characters are not allowed in firstName and collageName" })
         }
 
         let emailTest1 = emailTest.test(email)

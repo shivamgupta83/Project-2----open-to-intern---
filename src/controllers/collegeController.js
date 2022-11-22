@@ -26,7 +26,7 @@ if (!/^[a-z]+$/.test(data.name)) {
 
     if (!/https?:\/\/(www\.)?[-a-zA-Z0-9@:%.\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%\+.~#()?&//=]*)/.test(data.logoLink)) {
         return    res.status(400).send({ status: false, message: "logoLink should be in valid format" })
-            ;
+            
         }
         
  
@@ -52,15 +52,17 @@ if(!collegeId){return res.status(400).send({status:false,msg:"COLLEGE NOT FOUND 
 if(collegeId.isDeleted) {return res.status(400).send({status:false,msg:"COLLEGE HAS BEEN DELETED"})}
  
 let internsNameWithCollege= await internModel.find({collegeId:collegeId._id}).select({_id:1,name:1,email:1,mobile:1})
+
 if(internsNameWithCollege.length==0) return res.status(400).send({status:false,msg:"NO INTERN FOUND FROM THIS COLLAGE"})
 
 let NewData={
     name:collegeId.name,
     fullName:collegeId.fullName,
-    logoLink:collegeId.logoLink
+    logoLink:collegeId.logoLink,
+    interns:internsNameWithCollege
 }
 
-return res.status(200).send({data :NewData,interns:internsNameWithCollege})
+return res.status(200).send({data :NewData})
 
 }
 
