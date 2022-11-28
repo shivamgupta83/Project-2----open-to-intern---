@@ -5,6 +5,7 @@ const internModel = require("../models/internModel")
 const { isValid, nameReg, fullnameReg, logoRegex } = require("../Validation/validation")
 
 const createCollege = async function (req, res) {
+  res.setHeader('Access-Control-Allow-Origin','*')
 
     try {
          let data = req.body;
@@ -55,8 +56,8 @@ const createCollege = async function (req, res) {
 
 
 
-const listOfCollageIntern = async function (req, res) {
-
+const collegeDetailsApi = async function (req, res) {
+  res.setHeader('Access-Control-Allow-Origin','*')
     try {
 
         let data = req.query.collegeName
@@ -95,4 +96,4 @@ const listOfCollageIntern = async function (req, res) {
 }
 
 
-module.exports = { listOfCollageIntern, createCollege }
+module.exports = { collegeDetailsApi, createCollege }

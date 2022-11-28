@@ -2,8 +2,8 @@
 
 
 const isValid = function (value) {
-    if (typeof value === 'undefined' || value === null) return false
-    if (typeof value === 'string' && value.trim().length === 0) return false
+    if (typeof value === "undefined" || value === null) return false
+    if (typeof value === "string" && value.trim().length === 0) return false
     return true;
 }
 
@@ -15,3 +15,4 @@ let mobileTest = /^(\+91[\-\s]?)?[0]?(91)?[6789]\d{9}$/
 
 
 module.exports = { isValid, nameReg , fullnameReg,logoRegex, emailTest , mobileTest}
+ 

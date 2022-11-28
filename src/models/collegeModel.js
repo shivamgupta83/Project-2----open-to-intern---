@@ -1,12 +1,12 @@
 const mongoose = require("mongoose")
 
 const collegeSchema = new mongoose.Schema({
-    name: {                                     
+    name: {                                 
         type: String,
         unique: true,
         required: 'College name is Neccasary'
     },
-    fullName: {                              
+    fullName: {
         type: String,
         require: 'Fullname is Neccasary',
         trim : true

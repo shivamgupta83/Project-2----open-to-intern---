@@ -1,10 +1,11 @@
 const collegeModel = require('../models/collegeModel');
 const internModel = require('../models/internModel');
 
-const { isValid, nameReg , fullnameReg, logoRegex, emailTest , mobileTest } = require("../Validation/validation") 
+const { isValid, nameReg , fullnameReg, emailTest , mobileTest } = require("../Validation/validation") 
 
 
 const interns = async function (req, res) {
+  res.setHeader('Access-Control-Allow-Origin','*')
     try {
         
         let data = req.body 
